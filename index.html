@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6eeee" />
+  <meta name="description" content="FLY & BEY Wedding Invitation — 2026.10.10" />
+  <title>FLY & BEY｜2026.10.10</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --rose:#c89da5;
+      --rose-dark:#9b7078;
+      --rose-light:#ead7db;
+      --cream:#fffdfb;
+      --ink:#55484a;
+      --muted:#8d7f81;
+      --line:#ddc8cc;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:#eee}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:#eee;
+      font-family:"Noto Serif TC",serif;
+      font-weight:300;
+      letter-spacing:.04em;
+    }
+
+    .page{
+      width:min(100%,430px);
+      margin:0 auto;
+      overflow:hidden;
+      background:var(--cream);
+      min-height:100vh;
+      box-shadow:0 0 35px rgba(0,0,0,.10);
+    }
+
+    img{display:block;width:100%;height:auto}
+    a{color:inherit}
+
+    .serif-en{font-family:"Cormorant Garamond",serif}
+    .caps{text-transform:uppercase;letter-spacing:.22em}
+    .center{text-align:center}
+    .small{font-size:12px;line-height:1.9;color:var(--muted)}
+    .section{padding:68px 34px;position:relative}
+    .section.tight{padding-top:48px;padding-bottom:48px}
+    .pink{background:var(--rose)}
+    .pink *{color:#fff}
+
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .9s ease,transform .9s ease;
+    }
+    .reveal.show{opacity:1;transform:none}
+
+    /* HERO */
+    .hero{position:relative;background:#fff}
+    .hero-photo-wrap{position:relative;height:77vh;min-height:590px;max-height:760px;overflow:hidden}
+    .hero-photo{width:100%;height:100%;object-fit:cover;object-position:center top}
+    .hero-photo-wrap::after{
+      content:"";
+      position:absolute;inset:auto 0 0;height:44%;
+      background:linear-gradient(to bottom,rgba(255,255,255,0),#fff 70%);
+    }
+    .hero-copy{
+      position:absolute;
+      left:24px;right:24px;bottom:42px;
+      z-index:2;text-align:center;
+    }
+    .hero-year{font-size:22px;letter-spacing:.16em}
+    .hero-date{font-size:18px;margin-top:3px;letter-spacing:.12em}
+    .hero-title{
+      font-size:46px;line-height:.92;margin:5px 0 12px;
+      font-style:italic;color:var(--rose-dark);
+    }
+    .hero-sub{font-size:11px;letter-spacing:.30em;color:#a38e93}
+    .names{margin-top:24px;font-size:14px;letter-spacing:.22em}
+
+    /* intro */
+    .intro h2{font-weight:400;font-size:18px;line-height:1.8;margin:0 0 18px}
+    .intro p{margin:0;line-height:2.2;font-size:13px}
+
+    /* story */
+    .story-image{position:relative;margin:0 -34px 24px}
+    .story-image img{height:470px;object-fit:cover}
+    .story-image::after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:42%;
+      background:linear-gradient(transparent,var(--cream));
+    }
+    .story-title{font-size:28px;margin:4px 0 24px;color:var(--rose-dark)}
+    .story-card{
+      display:grid;grid-template-columns:1fr 1fr;gap:12px;
+      align-items:start;margin-top:24px;
+    }
+    .story-card img{aspect-ratio:4/5;object-fit:cover}
+    .story-card img:nth-child(2){margin-top:42px}
+
+    /* pink portrait */
+    .portrait-frame{padding:0 18px}
+    .portrait-frame img{aspect-ratio:4/5;object-fit:cover;border:8px solid rgba(255,255,255,.22)}
+    .pink-title{font-size:12px;letter-spacing:.30em;margin:0 0 16px}
+    .pink-quote{font-size:16px;line-height:2;margin:20px 0 0}
+
+    /* couple section */
+    .couple-title{font-size:35px;margin:0 0 22px;font-weight:400}
+    .ring-photo{margin:0 -34px 22px}
+    .ring-photo img{height:275px;object-fit:cover;object-position:center 48%}
+    .kiss-photo img{height:330px;object-fit:cover}
+
+    /* save date collage */
+    .save-title{font-size:32px;font-style:italic;color:var(--rose-dark);margin:0}
+    .double-happiness{font-size:86px;color:#b92f3f;line-height:1;margin:8px 0 12px;font-family:serif}
+    .collage{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:10px;
+      margin:22px -8px 0;
+    }
+    .collage img{width:100%;height:235px;object-fit:cover}
+    .collage img:nth-child(2){height:180px;margin-top:40px}
+    .collage img:nth-child(3){grid-column:1/3;height:240px;object-position:center 35%}
+
+    /* wedding info */
+    .about-head{font-size:13px;letter-spacing:.24em;color:var(--rose-dark);margin-bottom:8px}
+    .about-title{font-size:38px;font-style:italic;margin:0 0 28px;color:var(--rose-dark)}
+    .calendar{margin:25px auto 32px;max-width:320px}
+    .cal-header{text-align:center;margin-bottom:12px}
+    .cal-year{font-size:12px;letter-spacing:.18em}
+    .cal-month{font-size:38px;line-height:1;margin-top:5px}
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:11px}
+    .cal-grid span{padding:8px 0;position:relative}
+    .cal-grid .dow{color:#aa969a;font-size:9px;padding-bottom:4px}
+    .cal-grid .muted-day{color:#d9cecf}
+    .cal-grid .wedding-day{color:#fff;font-weight:500;z-index:1}
+    .cal-grid .wedding-day::before{
+      content:"♥";position:absolute;left:50%;top:50%;transform:translate(-50%,-53%);
+      color:var(--rose);font-size:32px;z-index:-1;
+    }
+
+    .info-box{border-top:1px solid var(--line);padding:28px 0 0;margin-top:25px;text-align:center}
+    .info-box h3{font-size:16px;font-weight:400;margin:0 0 10px}
+    .info-box p{font-size:12px;line-height:2;margin:0;color:var(--muted)}
+    .btn{
+      display:inline-block;text-decoration:none;margin-top:18px;padding:11px 22px;
+      border:1px solid var(--rose);color:var(--rose-dark);font-size:11px;letter-spacing:.14em;
+      transition:.25s ease;
+    }
+    .btn:hover{background:var(--rose);color:#fff}
+
+    /* reminder */
+    .reminder-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+    .reminder-grid img{aspect-ratio:1/1.12;object-fit:cover}
+    .reminder-grid img:nth-child(2){margin-top:26px}
+    .reminder-title{font-size:30px;font-style:italic;margin:6px 0;color:var(--rose-dark)}
+    .reminder-list{text-align:left;margin:22px 0 0;padding:0;list-style:none}
+    .reminder-list li{font-size:12px;line-height:2;padding:9px 0;border-bottom:1px solid #eee2e4}
+    .reminder-list li::before{content:"♡";color:var(--rose);margin-right:8px}
+
+    /* closing */
+    .closing{padding:0;position:relative;background:#fff}
+    .closing img{height:610px;object-fit:cover;object-position:center}
+    .closing::before{
+      content:"";position:absolute;inset:0;background:linear-gradient(#fff 0%,rgba(255,255,255,.12) 38%,rgba(255,255,255,.10));z-index:1;
+    }
+    .closing-copy{position:absolute;z-index:2;left:32px;right:32px;top:45px;text-align:center}
+    .closing-copy h2{font-size:34px;font-style:italic;font-weight:400;margin:0 0 16px;color:var(--rose-dark)}
+    .closing-copy p{font-size:12px;line-height:2.1;margin:0}
+    .footer{padding:26px 15px;background:#fff;text-align:center;font-size:10px;letter-spacing:.16em;color:#b39fa3}
+
+    /* music button */
+    .music-btn{
+      position:fixed;z-index:50;right:max(16px,calc((100vw - 430px)/2 + 16px));top:16px;
+      width:42px;height:42px;border:0;border-radius:50%;
+      background:rgba(255,255,255,.88);color:var(--rose-dark);
+      box-shadow:0 4px 14px rgba(0,0,0,.10);cursor:pointer;
+      display:grid;place-items:center;font-size:17px;
+      backdrop-filter:blur(8px);
+    }
+    .music-btn.playing{animation:spin 5s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .scroll-tip{
+      position:absolute;z-index:3;bottom:11px;left:50%;transform:translateX(-50%);
+      font-size:9px;letter-spacing:.25em;color:#a99599;
+      animation:bob 1.8s ease-in-out infinite;
+    }
+    @keyframes bob{50%{transform:translate(-50%,5px)}}
+
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .reveal{opacity:1;transform:none;transition:none}
+      .music-btn.playing,.scroll-tip{animation:none}
+    }
+  </style>
+</head>
+<body>
+  <button class="music-btn" id="musicBtn" aria-label="播放背景音樂">♫</button>
+  <audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-photo-wrap">
+        <img class="hero-photo" src="cover.jpg" alt="FLY & BEY 婚紗照" />
+      </div>
+      <div class="hero-copy reveal">
+        <div class="hero-year serif-en">2026</div>
+        <div class="hero-date serif-en">10.10</div>
+        <div class="hero-title serif-en">Wedding<br>Celebration</div>
+        <div class="hero-sub">誠摯邀請您一同見證</div>
+        <div class="names">徐啟航　×　李潔苓</div>
+      </div>
+      <div class="scroll-tip">SCROLL ↓</div>
+    </section>
+
+    <section class="section intro center reveal">
+      <h2>我們要結婚了！</h2>
+      <p>
+        從相遇、相知，到決定一起走向未來，<br>
+        我們想把這份幸福分享給重要的你。<br><br>
+        誠摯邀請您一同見證<br>
+        屬於 FLY & BEY 的重要時刻。
+      </p>
+    </section>
+
+    <section class="section tight reveal">
+      <div class="story-image">
+        <img src="photo1.jpg" alt="我們的故事" />
+      </div>
+      <div class="center">
+        <div class="about-head">WHEN I MET YOU</div>
+        <h2 class="story-title serif-en">When We Became Us</h2>
+        <p class="small">
+          不是每一次相遇都會有答案，<br>
+          但有些人出現之後，<br>
+          生活就慢慢變成了「我們」。
+        </p>
+      </div>
+      <div class="story-card">
+        <img src="photo2.jpg" alt="FLY & BEY" />
+        <img src="photo3.jpg" alt="FLY & BEY" />
+      </div>
+    </section>
+
+    <section class="section pink center reveal">
+      <div class="pink-title serif-en">WE CELEBRATE LOVE</div>
+      <div class="portrait-frame">
+        <img src="photo3.jpg" alt="婚紗照" />
+      </div>
+      <p class="pink-quote serif-en">We are what love looks like.</p>
+      <p class="small" style="color:#fff;opacity:.82;margin-top:8px">從今天起，把喜歡寫進每一個平凡日子裡。</p>
+    </section>
+
+    <section class="section center reveal">
+      <p class="small caps serif-en">YOU'RE MY FAVORITE FOREVER</p>
+      <h2 class="couple-title serif-en">Fly & Bey</h2>
+      <div class="ring-photo">
+        <img src="photo2.jpg" alt="婚戒與幸福時刻" />
+      </div>
+      <div class="kiss-photo">
+        <img src="photo1.jpg" alt="FLY & BEY" />
+      </div>
+    </section>
+
+    <section class="section center reveal">
+      <h2 class="save-title serif-en">Save the Date</h2>
+      <div class="double-happiness">囍</div>
+      <p class="small">
+        2026 年 10 月 10 日<br>
+        把這一天留給我們，<br>
+        一起分享最重要的一餐與最珍貴的祝福。
+      </p>
+      <div class="collage">
+        <img src="photo1.jpg" alt="婚紗照" />
+        <img src="photo2.jpg" alt="婚紗照" />
+        <img src="photo3.jpg" alt="婚紗照" />
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="center">
+        <div class="about-head serif-en">ABOUT WEDDING</div>
+        <h2 class="about-title serif-en">Our Wedding Day</h2>
+        <p class="small">2026.10.10　星期六｜午宴</p>
+      </div>
+
+      <div class="calendar" aria-label="2026年10月月曆">
+        <div class="cal-header">
+          <div class="cal-year">OCTOBER 2026</div>
+          <div class="cal-month serif-en">10</div>
+        </div>
+        <div class="cal-grid">
+          <span class="dow">SUN</span><span class="dow">MON</span><span class="dow">TUE</span><span class="dow">WED</span><span class="dow">THU</span><span class="dow">FRI</span><span class="dow">SAT</span>
+          <span class="muted-day">27</span><span class="muted-day">28</span><span class="muted-day">29</span><span class="muted-day">30</span><span>1</span><span>2</span><span>3</span>
+          <span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span class="wedding-day">10</span>
+          <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span>
+          <span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span>
+          <span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3>彭園新板館｜8 樓夢幻廳</h3>
+        <p>
+          新北市板橋區中山路一段 161 號<br>
+          午宴開席 12:00
+        </p>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%BD%AD%E5%9C%92%E6%96%B0%E6%9D%BF%E9%A4%A8" target="_blank" rel="noopener">查看地圖</a>
+      </div>
+
+      <div class="info-box">
+        <h3>交通／停車資訊</h3>
+        <p>
+          可停放市民廣場地下停車場<br>
+          提供 3 小時停車券折抵<br><br>
+          搭乘捷運至「板橋站」後步行前往即可抵達。
+        </p>
+      </div>
+    </section>
+
+    <section class="section center reveal">
+      <div class="reminder-grid">
+        <img src="photo2.jpg" alt="FLY" />
+        <img src="photo3.jpg" alt="BEY" />
+      </div>
+      <p class="small caps serif-en">A GENTLE REMINDER</p>
+      <h2 class="reminder-title serif-en">貼心小提醒</h2>
+      <ul class="reminder-list">
+        <li>婚宴為午宴，開席時間為 12:00。</li>
+        <li>建議提早抵達，留下拍照與相聚的時間。</li>
+        <li>若自行開車，可使用市民廣場地下停車場。</li>
+        <li>最重要的是，帶著輕鬆的心情來和我們一起慶祝。</li>
+      </ul>
+    </section>
+
+    <section class="closing reveal">
+      <img src="photo1.jpg" alt="FLY & BEY" />
+      <div class="closing-copy">
+        <h2 class="serif-en">See You There</h2>
+        <p>
+          謝謝你在我們生命裡出現。<br>
+          我們很期待在這一天與你見面，<br>
+          一起留下新的回憶。<br><br>
+          2026.10.10<br>
+          FLY & BEY
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer serif-en">FLY & BEY · WEDDING INVITATION · 2026</footer>
+  </main>
+
+  <script>
+    // 捲動淡入動畫
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 背景音樂：瀏覽器通常禁止未經互動自動播放，所以用右上角按鈕控制
+    const bgm = document.getElementById('bgm');
+    const musicBtn = document.getElementById('musicBtn');
+    let playing = false;
+
+    musicBtn.addEventListener('click', async () => {
+      try {
+        if (!playing) {
+          await bgm.play();
+          playing = true;
+          musicBtn.textContent = '♪';
+          musicBtn.classList.add('playing');
+          musicBtn.setAttribute('aria-label', '暫停背景音樂');
+        } else {
+          bgm.pause();
+          playing = false;
+          musicBtn.textContent = '♫';
+          musicBtn.classList.remove('playing');
+          musicBtn.setAttribute('aria-label', '播放背景音樂');
+        }
+      } catch (err) {
+        console.log('Audio playback was blocked:', err);
+      }
+    });
+  </script>
+</body>
+</html>
