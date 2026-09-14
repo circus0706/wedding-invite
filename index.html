@@ -81,12 +81,12 @@
     .hero-copy{position:absolute;z-index:2;left:24px;right:24px;bottom:48px;text-align:center}
     .hero-date-small{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif;font-size:18px;letter-spacing:.12em;font-weight:500}
     .hero-title{margin:0 0 10px;font-family:"Great Vibes",cursive;font-size:58px;line-height:.9;font-style:normal;font-weight:400;letter-spacing:0;color:var(--rose-deep)}
-    .hero-sub{font-size:11px;letter-spacing:.2em;color:#9d8d91;font-weight:500}
+    .hero-sub{font-size:11px;letter-spacing:.2em;color:#e85f84;font-weight:500}
     .hero-names{margin-top:20px;font-size:14px;letter-spacing:.12em;font-weight:500}
     .parents{margin-top:18px;display:flex;justify-content:center;align-items:center;gap:14px}
     .parent-group{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:118px}
-    .parent-label{font-size:9px;letter-spacing:.1em;color:#a18f94;white-space:nowrap;font-weight:500}
-    .parent-name{font-size:11px;letter-spacing:.08em;color:#5d5053;white-space:nowrap;font-weight:500}
+    .parent-label{font-size:9px;letter-spacing:.1em;color:#e85f84;white-space:nowrap;font-weight:500}
+    .parent-name{font-size:11px;letter-spacing:.08em;color:#d68da1;white-space:nowrap;font-weight:500}
     .parent-divider{width:1px;height:34px;background:#dbc9cd}
     .scroll-tip{position:absolute;z-index:3;bottom:12px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.25em;color:#ad999e;animation:bob 1.7s ease-in-out infinite}
     @keyframes bob{50%{transform:translate(-50%,5px)}}
@@ -118,7 +118,7 @@
 
     /* save date + lifestyle */
     .save-title{font-family:"Great Vibes",cursive;font-size:50px;font-style:normal;letter-spacing:0;margin:0;color:var(--rose-deep)}
-    .double-happiness{font-size:84px;line-height:.95;margin:2px 0 14px;color:#b42b3a;font-family:serif}
+    .double-happiness{font-size:80px;line-height:.95;margin:3px 0 14px;color:#e85f84;font-family:serif}
     .lifestyle{display:grid;grid-template-columns:1fr 1fr;gap:11px;align-items:start;margin:30px 0 18px}
     .lifestyle img{height:250px;object-fit:cover}
     .lifestyle img:nth-child(2){margin-top:38px;height:220px}
@@ -209,7 +209,7 @@
     <section class="hero">
       <img src="photo01.jpg" alt="FLY & BEY 婚紗照">
       <div class="hero-copy reveal">
-        <div class="hero-date-small en">2026 · 10 · 10</div>
+        <div class="hero-date-small en"></div>
         <h1 class="hero-title en">Wedding<br>Celebration</h1>
         <div class="hero-sub">我們要結婚了</div>
         <div class="hero-names">徐啟航　×　李潔苓</div>
@@ -230,65 +230,37 @@
 
     <!-- 02 城市／夜景 -->
     <section class="section invite center reveal">
-      <h2>有些相遇，讓兩個人的故事<br>慢慢變成同一個未來。</h2>
+      <h2>我們其實一樣，在小事中長大<br>用不同的模樣，學會了愛。</h2>
       <p>從相識、相知，到決定牽著彼此走下去，<br>我們想把這份幸福分享給重要的你。</p>
-      <div class="city-photo">
+
+          <h3 class="en"></h3>
+          <p class="small">當「我」慢慢變成「我們」</p>
+      <div class="celebrate-main"><img src="photo10.jpg" alt="棚拍全身婚紗照"></div>
+      <p class="celebrate-quote en">We are what love looks like.</p>
+      <div class="celebrate-secondary"><img src="photo11.jpg" alt="窗邊婚紗照"></div>
+             <div class="city-photo">
         <img src="photo02.jpg" alt="我們的故事">
         <div class="city-overlay">
-          <h3 class="en">When We Became Us</h3>
-          <p class="small">當「我」慢慢變成「我們」</p>
-        </div>
+    </div>
       </div>
     </section>
 
-    <!-- 03 + 04 棚拍 -->
-    <section class="section rose-bg center reveal">
-      <div class="celebrate-title en">WE CELEBRATE LOVE</div>
-      <div class="celebrate-main"><img src="photo03.jpg" alt="棚拍全身婚紗照"></div>
-      <p class="celebrate-quote en">We are what love looks like.</p>
-      <div class="celebrate-secondary"><img src="photo04.jpg" alt="窗邊婚紗照"></div>
-      <p class="pink-note" style="margin-top:16px">Love is in every ordinary moment.</p>
-    </section>
 
-    <!-- 05 + 06 登記照片 -->
-    <section class="section center reveal">
-      <h2 class="names-title en">FLY & BEY</h2>
-      <p class="small">從決定一起走下去的那一天起，<br>每個小小的瞬間都成了紀念。</p>
-      <div class="registration-grid">
-        <img src="photo05.jpg" alt="登記簽名照">
         <img src="photo06.jpg" alt="登記親吻照">
-      </div>
-    </section>
-
+    
     <!-- 07 + 08 生活照 -->
     <section class="section center reveal">
-      <h2 class="save-title en">Save the Date</h2>
+      <h2 class="save-title en"></h2>
       <div class="double-happiness">囍</div>
       <p class="small">2026 年 10 月 10 日<br>請把這一天留給我們。</p>
-      <div class="lifestyle">
-        <img src="photo07.jpg" alt="生活合照一">
-        <img src="photo08.jpg" alt="生活合照二">
-      </div>
-      <div class="love-you en">LOVE YOU</div>
-      <p class="lucky en">Lucky me, lucky us.<br>I get to marry my best friend.</p>
+      <p class="small">誠摯邀請您，一起見證我們的重要時刻。</p>
     </section>
 
-    <!-- 09 夕陽婚紗 -->
-    <section class="sunset reveal">
-      <img src="photo09.jpg" alt="夕陽婚紗照">
-      <div class="sunset-copy">
-        <div class="about-label en">ABOUT WEDDING</div>
-        <h2 class="en">Our Wedding Day</h2>
-        <p class="small">誠摯邀請您，一起見證我們的重要時刻。</p>
-      </div>
-    </section>
 
     <!-- 婚宴資訊（依你先前要求，不放 RSVP、不放當日流程） -->
     <section class="section reveal">
       <div class="center">
-        <div class="about-label en">SAVE THE DATE</div>
-        <h2 class="about-title en">2026.10.10</h2>
-        <p class="small">星期六｜午宴｜12:00 開席</p>
+    
       </div>
 
       <div class="calendar" aria-label="2026年10月月曆">
@@ -308,47 +280,34 @@
 
       <div class="info-box">
         <h3>彭園新板館｜8 樓夢幻廳</h3>
-        <p>新北市板橋區中山路一段 161 號<br>午宴開席 12:00</p>
+        <p>新北市板橋區中山路一段 161 號<br>星期六｜午宴｜12:00 入席｜12:30 開席</p>
+    
         <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E5%BD%AD%E5%9C%92%E6%96%B0%E6%9D%BF%E9%A4%A8" target="_blank" rel="noopener">GOOGLE MAP</a>
       </div>
 
       <div class="info-box">
         <h3>交通／停車資訊</h3>
-        <p>可停放市民廣場地下停車場<br>提供 3 小時停車券折抵<br><br>搭乘捷運至「板橋站」後步行前往。</p>
+        <p>可停放市民廣場地下停車場<br>提供 3 小時汽車停車券折抵<br><br>搭乘捷運、台鐵、高鐵至「板橋站」後步行5分鐘前往。</p>
       </div>
     </section>
 
     <!-- 10 + 11 墨鏡照：保留原 Reels 的粉色雙照片區，但不放婚宴流程 -->
     <section class="section rose-bg center reveal">
-      <h2 class="pink-big en">See You Soon</h2>
-      <p class="pink-note">期待在這一天，看見每一位重要的你。</p>
-      <div class="portrait-pair">
-        <img src="photo10.jpg" alt="新郎照片">
-        <img src="photo11.jpg" alt="新娘照片">
-      </div>
     </section>
 
-    <section class="section center reminder reveal">
-      <div class="about-label en">A GENTLE REMINDER</div>
-      <h2>貼心小提醒</h2>
-      <ul>
-        <li>婚宴為午宴，12:00 開席。</li>
-        <li>建議提早抵達，留下拍照與相聚的時間。</li>
-        <li>自行開車可使用市民廣場地下停車場。</li>
-        <li>最重要的是，帶著輕鬆的心情來和我們一起慶祝。</li>
-      </ul>
-    </section>
 
     <!-- 12 最後自拍 -->
     <section class="final-photo reveal">
       <img src="photo12.jpg" alt="FLY & BEY 頭紗自拍">
       <div class="final-copy">
         <h2 class="en">Thanks</h2>
-        <p>好久不見，婚禮見！<br>Thank you with all our love.<br><br>FLY & BEY · 2026.10.10</p>
+        
+      <h2 class="pink-big en"></h2>
+      <p class="pink-note">期待在這一天，看見每一位重要的你。</p>
+        <p>婚禮見！<br><br><br>啟航 & 潔苓 · 2026.10.10</p>
       </div>
     </section>
 
-    <footer class="en">FLY & BEY · WEDDING INVITATION · 2026</footer>
   </main>
 
   <script>
