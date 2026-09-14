@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&family=Great+Vibes&family=Noto+Sans+TC:wght@300;400;500;600&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -46,14 +46,14 @@
       margin:0;
       color:var(--ink);
       background:#ececec;
-      font-family:"Noto Serif TC",serif;
-      font-weight:300;
-      letter-spacing:.04em;
+      font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif;
+      font-weight:400;
+      letter-spacing:.035em;
     }
     img{display:block;width:100%;height:auto}
     a{color:inherit}
     .page{width:min(100%,430px);margin:0 auto;background:var(--paper);overflow:hidden;box-shadow:0 0 35px rgba(0,0,0,.1)}
-    .en{font-family:"Cormorant Garamond",serif}
+    .en{font-family:"Dancing Script",cursive;letter-spacing:.01em}
     .center{text-align:center}
     .section{position:relative;padding:62px 32px}
     .small{font-size:12px;line-height:2;color:var(--muted)}
@@ -79,14 +79,14 @@
     .hero img{width:100%;height:78%;object-fit:cover;object-position:center top}
     .hero::after{content:"";position:absolute;inset:38% 0 0;background:linear-gradient(transparent 0%,rgba(255,255,255,.72) 48%,#fff 76%)}
     .hero-copy{position:absolute;z-index:2;left:24px;right:24px;bottom:48px;text-align:center}
-    .hero-date-small{font-size:18px;letter-spacing:.12em}
-    .hero-title{margin:2px 0 8px;font-size:47px;line-height:.84;font-style:italic;color:var(--rose-deep)}
-    .hero-sub{font-size:10px;letter-spacing:.28em;color:#9d8d91}
-    .hero-names{margin-top:22px;font-size:13px;letter-spacing:.18em}
+    .hero-date-small{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif;font-size:18px;letter-spacing:.12em;font-weight:500}
+    .hero-title{margin:0 0 10px;font-family:"Great Vibes",cursive;font-size:58px;line-height:.9;font-style:normal;font-weight:400;letter-spacing:0;color:var(--rose-deep)}
+    .hero-sub{font-size:11px;letter-spacing:.2em;color:#9d8d91;font-weight:500}
+    .hero-names{margin-top:20px;font-size:14px;letter-spacing:.12em;font-weight:500}
     .parents{margin-top:18px;display:flex;justify-content:center;align-items:center;gap:14px}
     .parent-group{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:118px}
-    .parent-label{font-size:9px;letter-spacing:.18em;color:#a18f94;white-space:nowrap}
-    .parent-name{font-size:11px;letter-spacing:.12em;color:#5d5053;white-space:nowrap}
+    .parent-label{font-size:9px;letter-spacing:.1em;color:#a18f94;white-space:nowrap;font-weight:500}
+    .parent-name{font-size:11px;letter-spacing:.08em;color:#5d5053;white-space:nowrap;font-weight:500}
     .parent-divider{width:1px;height:34px;background:#dbc9cd}
     .scroll-tip{position:absolute;z-index:3;bottom:12px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.25em;color:#ad999e;animation:bob 1.7s ease-in-out infinite}
     @keyframes bob{50%{transform:translate(-50%,5px)}}
@@ -99,45 +99,45 @@
     .city-photo img{height:430px;object-fit:cover}
     .city-photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:54%;background:linear-gradient(transparent,#fff)}
     .city-overlay{position:absolute;z-index:2;left:32px;right:32px;bottom:28px;text-align:center}
-    .city-overlay h3{font-size:31px;font-weight:400;color:var(--rose-deep);margin:0 0 10px}
+    .city-overlay h3{font-family:"Great Vibes",cursive;font-size:42px;font-weight:400;letter-spacing:0;color:var(--rose-deep);margin:0 0 10px}
 
     /* pink two photos */
-    .celebrate-title{font-size:11px;letter-spacing:.28em;margin-bottom:18px;opacity:.92}
+    .celebrate-title{font-size:20px;letter-spacing:.02em;margin-bottom:18px;opacity:.95}
     .celebrate-main{padding:0 14px}
     .celebrate-main img{aspect-ratio:4/5;object-fit:cover;border:7px solid rgba(255,255,255,.2)}
-    .celebrate-quote{font-size:16px;margin:18px 0 26px}
+    .celebrate-quote{font-size:24px;margin:18px 0 26px;line-height:1.2}
     .celebrate-secondary{width:62%;margin:0 auto}
     .celebrate-secondary img{aspect-ratio:3/4;object-fit:cover}
 
     /* registration */
-    .names-title{font-size:35px;margin:0 0 20px;font-weight:400}
+    .names-title{font-family:"Great Vibes",cursive;font-size:52px;margin:0 0 20px;font-weight:400;letter-spacing:0}
     .registration-grid{display:grid;gap:14px;margin-top:24px}
     .registration-grid img{object-fit:cover}
     .registration-grid img:first-child{height:230px}
     .registration-grid img:last-child{height:330px}
 
     /* save date + lifestyle */
-    .save-title{font-size:31px;font-style:italic;margin:0;color:var(--rose-deep)}
+    .save-title{font-family:"Great Vibes",cursive;font-size:50px;font-style:normal;letter-spacing:0;margin:0;color:var(--rose-deep)}
     .double-happiness{font-size:84px;line-height:.95;margin:2px 0 14px;color:#b42b3a;font-family:serif}
     .lifestyle{display:grid;grid-template-columns:1fr 1fr;gap:11px;align-items:start;margin:30px 0 18px}
     .lifestyle img{height:250px;object-fit:cover}
     .lifestyle img:nth-child(2){margin-top:38px;height:220px}
-    .love-you{font-size:17px;letter-spacing:.18em;color:var(--rose-deep)}
-    .lucky{font-size:17px;line-height:1.5;margin:12px 0 0;font-style:italic}
+    .love-you{font-size:24px;letter-spacing:.02em;color:var(--rose-deep)}
+    .lucky{font-size:21px;line-height:1.45;margin:12px 0 0;font-style:normal}
 
     /* sunset */
     .sunset{padding:0;position:relative;height:560px}
     .sunset img{width:100%;height:100%;object-fit:cover}
     .sunset::after{content:"";position:absolute;inset:46% 0 0;background:linear-gradient(transparent,#fff 82%)}
     .sunset-copy{position:absolute;z-index:2;left:32px;right:32px;bottom:30px;text-align:center}
-    .sunset-copy h2{font-size:33px;font-style:italic;font-weight:400;color:var(--rose-deep);margin:0 0 8px}
+    .sunset-copy h2{font-family:"Great Vibes",cursive;font-size:50px;font-style:normal;font-weight:400;letter-spacing:0;color:var(--rose-deep);margin:0 0 8px}
 
     /* wedding info */
-    .about-label{font-size:11px;letter-spacing:.24em;color:var(--rose-deep)}
-    .about-title{font-size:39px;font-style:italic;color:var(--rose-deep);font-weight:400;margin:4px 0 12px}
+    .about-label{font-size:18px;letter-spacing:.01em;color:var(--rose-deep)}
+    .about-title{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif;font-size:37px;font-style:normal;letter-spacing:.04em;color:var(--rose-deep);font-weight:500;margin:4px 0 12px}
     .calendar{margin:28px auto 32px;max-width:320px}
     .cal-head{text-align:center;margin-bottom:12px}
-    .cal-head .month{font-size:36px;line-height:1}
+    .cal-head .month{font-size:34px;line-height:1.1}
     .cal-head .year{font-size:10px;letter-spacing:.18em;margin-top:4px}
     .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;font-size:11px}
     .cal-grid span{padding:8px 0;position:relative}
@@ -154,11 +154,11 @@
     .portrait-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;margin-top:26px}
     .portrait-pair img{aspect-ratio:1/1.12;object-fit:cover}
     .portrait-pair img:nth-child(2){margin-top:40px}
-    .pink-big{font-size:34px;font-style:italic;font-weight:400;margin:0 0 6px}
+    .pink-big{font-family:"Great Vibes",cursive;font-size:52px;font-style:normal;font-weight:400;letter-spacing:0;margin:0 0 6px}
     .pink-note{font-size:11px;line-height:2;opacity:.86}
 
     /* reminder */
-    .reminder h2{font-size:31px;font-style:italic;color:var(--rose-deep);font-weight:400;margin:5px 0 18px}
+    .reminder h2{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif;font-size:29px;font-style:normal;letter-spacing:.08em;color:var(--rose-deep);font-weight:500;margin:5px 0 18px}
     .reminder ul{list-style:none;padding:0;margin:22px 0 0;text-align:left}
     .reminder li{font-size:12px;line-height:2;padding:9px 0;border-bottom:1px solid #eee2e4}
     .reminder li::before{content:"♡";color:var(--rose);margin-right:8px}
@@ -168,7 +168,7 @@
     .final-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
     .final-photo::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(#fff 0%,rgba(255,255,255,.48) 25%,transparent 52%,rgba(255,255,255,.15) 78%,#fff 100%)}
     .final-copy{position:absolute;z-index:2;left:28px;right:28px;bottom:36px;text-align:center}
-    .final-copy h2{font-size:39px;font-style:italic;color:var(--rose-deep);font-weight:400;margin:0 0 8px}
+    .final-copy h2{font-family:"Great Vibes",cursive;font-size:56px;font-style:normal;letter-spacing:0;color:var(--rose-deep);font-weight:400;margin:0 0 8px}
     .final-copy p{font-size:11px;line-height:1.9;color:#76676b;margin:0}
     footer{padding:24px 15px 30px;text-align:center;font-size:9px;letter-spacing:.18em;color:#b09ca0;background:#fff}
 
@@ -176,6 +176,12 @@
     .music-btn{position:fixed;z-index:60;right:max(14px,calc((100vw - 430px)/2 + 14px));top:14px;width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:var(--rose-deep);box-shadow:0 4px 16px rgba(0,0,0,.1);backdrop-filter:blur(8px);font-size:17px;cursor:pointer;display:grid;place-items:center}
     .music-btn.playing{animation:spin 5s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* 字體層級：英文草寫＋中文圓潤 */
+    .invite h2,.invite p,.small,.pink-note,.info-box h3,.info-box p,.reminder li,.final-copy p{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif}
+    .hero-title,.city-overlay h3,.names-title,.save-title,.sunset-copy h2,.pink-big,.final-copy h2{font-family:"Great Vibes",cursive}
+    .celebrate-title,.celebrate-quote,.love-you,.lucky,.about-label,.cal-head .month,footer.en{font-family:"Dancing Script",cursive}
+    .hero-date-small,.about-title,.reminder h2{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif}
 
     @media (max-width:380px){
       .parents{gap:9px}
@@ -324,7 +330,7 @@
 
     <section class="section center reminder reveal">
       <div class="about-label en">A GENTLE REMINDER</div>
-      <h2 class="en">貼心小提醒</h2>
+      <h2>貼心小提醒</h2>
       <ul>
         <li>婚宴為午宴，12:00 開席。</li>
         <li>建議提早抵達，留下拍照與相聚的時間。</li>
