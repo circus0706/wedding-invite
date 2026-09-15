@@ -8,21 +8,11 @@
   <title>FLY & BEY｜2026.10.10</title>
 
   <!--
-    圖片檔案（依 Reels 出場順序，共 12 張）
-    photo01.jpg  封面／戒指合照
-    photo02.jpg  城市／夜景相擁照
-    photo03.jpg  棚拍全身合照
-    photo04.jpg  窗邊／捧花剪影照
-    photo05.jpg  登記／簽名手部照
-    photo06.jpg  登記後親吻照
-    photo07.jpg  生活感合照 A
-    photo08.jpg  生活感合照 B
-    photo09.jpg  夕陽婚紗照
-    photo10.jpg  新郎墨鏡照
-    photo11.jpg  新娘墨鏡照
-    photo12.jpg  最後頭紗自拍照
-
-    其他：bgm.mp3
+    目前實際使用檔案：
+    photo01.jpg  封面
+    photo10.jpg  內頁照片
+    photo12.jpg  最後一頁照片
+    bgm.mp3      背景音樂
   -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +23,6 @@
     :root{
       --rose:#c6929d;
       --rose-deep:#a56f79;
-      --rose-soft:#ecd8dc;
       --paper:#fffefd;
       --ink:#4d4345;
       --muted:#8b7b7f;
@@ -41,7 +30,12 @@
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;background:#ececec}
+
+    html{
+      scroll-behavior:smooth;
+      background:#ececec;
+    }
+
     body{
       margin:0;
       color:var(--ink);
@@ -50,153 +44,432 @@
       font-weight:400;
       letter-spacing:.035em;
     }
-    img{display:block;width:100%;height:auto}
-    a{color:inherit}
-    .page{width:min(100%,430px);margin:0 auto;background:var(--paper);overflow:hidden;box-shadow:0 0 35px rgba(0,0,0,.1)}
-    .en{font-family:"Dancing Script",cursive;letter-spacing:.01em}
-    .center{text-align:center}
-    .section{position:relative;padding:62px 32px}
-    .small{font-size:12px;line-height:2;color:var(--muted)}
-    .rose-bg{background:var(--rose)}
-    .rose-bg,.rose-bg *{color:#fff}
 
-    .reveal{opacity:0;transform:translateY(22px);transition:opacity .85s ease,transform .85s ease}
-    .reveal.show{opacity:1;transform:none}
-
-    /* loading */
-    .loader{
-      position:fixed;inset:0;z-index:1000;background:#fff;
-      display:grid;place-items:center;transition:opacity .65s ease,visibility .65s ease;
+    img{
+      display:block;
+      width:100%;
+      height:auto;
     }
-    .loader.hide{opacity:0;visibility:hidden}
+
+    .page{
+      width:min(100%,430px);
+      margin:0 auto;
+      background:var(--paper);
+      overflow:hidden;
+      box-shadow:0 0 35px rgba(0,0,0,.1);
+    }
+
+    .center{text-align:center}
+
+    .section{
+      position:relative;
+      padding:62px 32px;
+    }
+
+    .small{
+      font-size:12px;
+      line-height:2;
+      color:var(--muted);
+    }
+
+    /* 滾動淡入 */
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .85s ease,transform .85s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:none;
+    }
+
+    /* Loading */
+    .loader{
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      background:#fff;
+      display:grid;
+      place-items:center;
+      transition:opacity .65s ease,visibility .65s ease;
+    }
+
+    .loader.hide{
+      opacity:0;
+      visibility:hidden;
+    }
+
     .loader-inner{text-align:center}
-    .loader-photo{width:76px;height:76px;border-radius:50%;overflow:hidden;margin:0 auto 14px}
-    .loader-photo img{width:100%;height:100%;object-fit:cover}
-    .loader-text{font-size:10px;letter-spacing:.25em;color:#9f8e92}
 
-    /* hero */
-    .hero{position:relative;height:100svh;min-height:650px;background:#fff;overflow:hidden}
-    .hero img{width:100%;height:78%;object-fit:cover;object-position:center top}
-    .hero::after{content:"";position:absolute;inset:38% 0 0;background:linear-gradient(transparent 0%,rgba(255,255,255,.72) 48%,#fff 76%)}
-    .hero-copy{position:absolute;z-index:2;left:24px;right:24px;bottom:48px;text-align:center}
-    .hero-date-small{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif;font-size:18px;letter-spacing:.12em;font-weight:500}
-    .hero-title{margin:0 0 10px;font-family:"Great Vibes",cursive;font-size:50px;line-height:.9;font-style:normal;font-weight:400;letter-spacing:0;color:#d61850}
-    .hero-sub{font-size:20px;letter-spacing:.2em;color:#e85f84;font-weight:500}
-    .hero-names{margin-top:20px;font-size:14px;letter-spacing:.12em;font-weight:500}
-    .parents{margin-top:18px;display:flex;justify-content:center;align-items:center;gap:14px}
-    .parent-group{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:118px}
-    .parent-label{font-size:9px;letter-spacing:.1em;color:#e85f84;white-space:nowrap;font-weight:500}
-    .parent-name{font-size:12px;letter-spacing:.08em;color:#000000;white-space:nowrap;font-weight:500}
-    .parent-divider{width:1px;height:34px;background:#dbc9cd}
-    .scroll-tip{position:absolute;z-index:3;bottom:12px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.25em;color:#ad999e;animation:bob 1.7s ease-in-out infinite}
-    @keyframes bob{50%{transform:translate(-50%,5px)}}
+    .loader-photo{
+      width:76px;
+      height:76px;
+      border-radius:50%;
+      overflow:hidden;
+      margin:0 auto 14px;
+    }
 
-    /* invitation + city */
-    .invite{padding-bottom:0}
-    .invite h2{font-size:18px;font-weight:400;line-height:1.9;margin:0 0 18px}
-    .invite p{font-size:12px;line-height:2.1;margin:0;color:var(--muted)}
-    .city-photo{margin:42px -32px 0;position:relative}
-    .city-photo img{height:430px;object-fit:cover}
-    .city-photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:54%;background:linear-gradient(transparent,#fff)}
-    .city-overlay{position:absolute;z-index:2;left:32px;right:32px;bottom:28px;text-align:center}
-    .city-overlay h3{font-family:"Great Vibes",cursive;font-size:42px;font-weight:400;letter-spacing:0;color:var(--rose-deep);margin:0 0 10px}
+    .loader-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
 
-    /* pink two photos */
-    .celebrate-title{font-size:20px;letter-spacing:.02em;margin-bottom:18px;opacity:.95}
-    .celebrate-main{padding:0 14px}
-    .celebrate-main img{aspect-ratio:4/5;object-fit:cover;border:7px solid rgba(255,255,255,.2)}
-    .celebrate-quote{font-size:24px;margin:18px 0 26px;line-height:1.2}
-    .celebrate-secondary{width:62%;margin:0 auto}
-    .celebrate-secondary img{aspect-ratio:3/4;object-fit:cover}
+    .loader-text{
+      font-size:10px;
+      letter-spacing:.25em;
+      color:#9f8e92;
+    }
 
-    /* registration */
-    .names-title{font-family:"Great Vibes",cursive;font-size:52px;margin:0 0 20px;font-weight:400;letter-spacing:0}
-    .registration-grid{display:grid;gap:14px;margin-top:24px}
-    .registration-grid img{object-fit:cover}
-    .registration-grid img:first-child{height:230px}
-    .registration-grid img:last-child{height:330px}
+    /* 封面 */
+    .hero{
+      position:relative;
+      height:100svh;
+      min-height:650px;
+      background:#fff;
+      overflow:hidden;
+    }
 
-    /* save date + lifestyle */
-    .save-title{font-family:"Great Vibes",cursive;font-size:50px;font-style:normal;letter-spacing:0;margin:0;color:var(--rose-deep)}
-    .double-happiness{font-size:80px;line-height:.95;margin:3px 0 14px;color:#e85f84;font-family:serif}
-    .lifestyle{display:grid;grid-template-columns:1fr 1fr;gap:11px;align-items:start;margin:30px 0 18px}
-    .lifestyle img{height:250px;object-fit:cover}
-    .lifestyle img:nth-child(2){margin-top:38px;height:220px}
-    .love-you{font-size:24px;letter-spacing:.02em;color:var(--rose-deep)}
-    .lucky{font-size:21px;line-height:1.45;margin:12px 0 0;font-style:normal}
+    .hero > img{
+      width:100%;
+      height:78%;
+      object-fit:cover;
+      object-position:center top;
+    }
 
-    /* sunset */
-    .sunset{padding:0;position:relative;height:560px}
-    .sunset img{width:100%;height:100%;object-fit:cover}
-    .sunset::after{content:"";position:absolute;inset:46% 0 0;background:linear-gradient(transparent,#fff 82%)}
-    .sunset-copy{position:absolute;z-index:2;left:32px;right:32px;bottom:30px;text-align:center}
-    .sunset-copy h2{font-family:"Great Vibes",cursive;font-size:50px;font-style:normal;font-weight:400;letter-spacing:0;color:var(--rose-deep);margin:0 0 8px}
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:38% 0 0;
+      background:linear-gradient(transparent 0%,rgba(255,255,255,.72) 48%,#fff 76%);
+    }
 
-    /* wedding info */
-    .about-label{font-size:18px;letter-spacing:.01em;color:var(--rose-deep)}
-    .about-title{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif;font-size:37px;font-style:normal;letter-spacing:.04em;color:var(--rose-deep);font-weight:500;margin:4px 0 12px}
-    .calendar{margin:28px auto 32px;max-width:320px}
-    .cal-head{text-align:center;margin-bottom:12px}
-    .cal-head .month{font-size:34px;line-height:1.1}
-    .cal-head .year{font-size:10px;letter-spacing:.18em;margin-top:4px}
-    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;font-size:11px}
-    .cal-grid span{padding:8px 0;position:relative}
-    .cal-grid .dow{font-size:8px;color:#ad999d;padding-bottom:3px}
+    .hero-copy{
+      position:absolute;
+      z-index:2;
+      left:24px;
+      right:24px;
+      bottom:48px;
+      text-align:center;
+    }
+
+    .hero-title{
+      margin:0 0 10px;
+      font-family:"Great Vibes",cursive;
+      font-size:50px;
+      line-height:.9;
+      font-weight:400;
+      letter-spacing:0;
+      color:#d61850;
+    }
+
+    .hero-sub{
+      font-size:20px;
+      letter-spacing:.2em;
+      color:#e85f84;
+      font-weight:500;
+    }
+
+    .hero-names{
+      margin-top:20px;
+      font-size:14px;
+      letter-spacing:.12em;
+      font-weight:500;
+    }
+
+    .parents{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+    }
+
+    .parent-group{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:5px;
+      min-width:118px;
+    }
+
+    .parent-label{
+      font-size:9px;
+      letter-spacing:.1em;
+      color:#e85f84;
+      white-space:nowrap;
+      font-weight:500;
+    }
+
+    .parent-name{
+      font-size:12px;
+      letter-spacing:.08em;
+      color:#000;
+      white-space:nowrap;
+      font-weight:500;
+    }
+
+    .parent-divider{
+      width:1px;
+      height:34px;
+      background:#dbc9cd;
+    }
+
+    .scroll-tip{
+      position:absolute;
+      z-index:3;
+      bottom:12px;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:9px;
+      letter-spacing:.25em;
+      color:#ad999e;
+      animation:bob 1.7s ease-in-out infinite;
+    }
+
+    @keyframes bob{
+      50%{transform:translate(-50%,5px)}
+    }
+
+    /* 邀請文字 */
+    .invite h2{
+      font-size:18px;
+      font-weight:400;
+      line-height:1.9;
+      margin:0 0 18px;
+    }
+
+    .invite > p{
+      font-size:12px;
+      line-height:2.1;
+      margin:0;
+      color:var(--muted);
+    }
+
+    .invite .small{
+      margin-top:28px;
+    }
+
+    .celebrate-main{
+      margin-top:18px;
+      padding:0 14px;
+    }
+
+    .celebrate-main img{
+      aspect-ratio:4/5;
+      object-fit:cover;
+      border:7px solid rgba(198,146,157,.14);
+    }
+
+    /* 囍字邀請 */
+    .double-happiness{
+      font-size:80px;
+      line-height:.95;
+      margin:3px 0 14px;
+      color:#e85f84;
+      font-family:serif;
+    }
+
+    /* 婚宴資訊 */
+    .calendar{
+      margin:0 auto 32px;
+      max-width:320px;
+    }
+
+    .cal-head{
+      text-align:center;
+      margin-bottom:12px;
+    }
+
+    .cal-head .month{
+      font-family:"Dancing Script",cursive;
+      font-size:34px;
+      line-height:1.1;
+    }
+
+    .cal-head .year{
+      font-size:10px;
+      letter-spacing:.18em;
+      margin-top:4px;
+    }
+
+    .cal-grid{
+      display:grid;
+      grid-template-columns:repeat(7,1fr);
+      gap:3px;
+      text-align:center;
+      font-size:11px;
+    }
+
+    .cal-grid span{
+      padding:8px 0;
+      position:relative;
+    }
+
+    .cal-grid .dow{
+      font-size:8px;
+      color:#ad999d;
+      padding-bottom:3px;
+    }
+
     .cal-grid .muted{color:#ddd0d3}
-    .cal-grid .day10{color:#fff;z-index:1;font-weight:500}
-    .cal-grid .day10::before{content:"♥";position:absolute;left:50%;top:50%;transform:translate(-50%,-54%);color:var(--rose);font-size:31px;z-index:-1}
-    .info-box{border-top:1px solid var(--line);padding-top:26px;margin-top:25px;text-align:center}
-    .info-box h3{font-size:16px;font-weight:400;margin:0 0 10px}
-    .info-box p{font-size:12px;line-height:2;margin:0;color:var(--muted)}
-    .map-btn{display:inline-block;margin-top:16px;text-decoration:none;border:1px solid var(--rose);color:var(--rose-deep);padding:10px 18px;font-size:10px;letter-spacing:.15em}
 
-    /* pink portraits; keeps reel image count but no wedding-day schedule */
-    .portrait-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;margin-top:26px}
-    .portrait-pair img{aspect-ratio:1/1.12;object-fit:cover}
-    .portrait-pair img:nth-child(2){margin-top:40px}
-    .pink-big{font-family:"Great Vibes",cursive;font-size:52px;font-style:normal;font-weight:400;letter-spacing:0;margin:0 0 6px}
-    .pink-note{font-size:11px;line-height:2;opacity:.86}
+    .cal-grid .day10{
+      color:#fff;
+      z-index:1;
+      font-weight:500;
+    }
 
-    /* reminder */
-    .reminder h2{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif;font-size:29px;font-style:normal;letter-spacing:.08em;color:var(--rose-deep);font-weight:500;margin:5px 0 18px}
-    .reminder ul{list-style:none;padding:0;margin:22px 0 0;text-align:left}
-    .reminder li{font-size:12px;line-height:2;padding:9px 0;border-bottom:1px solid #eee2e4}
-    .reminder li::before{content:"♡";color:var(--rose);margin-right:8px}
+    .cal-grid .day10::before{
+      content:"♥";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-54%);
+      color:var(--rose);
+      font-size:31px;
+      z-index:-1;
+    }
 
-    /* final */
-    .final-photo{position:relative;height:600px;background:#fff}
-    .final-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
-    .final-photo::before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(#fff 0%,rgba(255,255,255,.48) 25%,transparent 52%,rgba(255,255,255,.15) 78%,#fff 100%)}
-    .final-copy{position:absolute;z-index:2;left:28px;right:28px;bottom:36px;text-align:center}
-    .final-copy h2{font-family:"Great Vibes",cursive;font-size:56px;font-style:normal;letter-spacing:0;color:#e85f84;font-weight:400;margin:0 0 8px}
-    .final-copy p{font-size:11px;line-height:1.9;color:#76676b;margin:0}
-    footer{padding:24px 15px 30px;text-align:center;font-size:9px;letter-spacing:.18em;color:#b09ca0;background:#fff}
+    .info-box{
+      border-top:1px solid var(--line);
+      padding-top:26px;
+      margin-top:25px;
+      text-align:center;
+    }
 
-    /* audio */
-    .music-btn{position:fixed;z-index:60;right:max(14px,calc((100vw - 430px)/2 + 14px));top:14px;width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:var(--rose-deep);box-shadow:0 4px 16px rgba(0,0,0,.1);backdrop-filter:blur(8px);font-size:17px;cursor:pointer;display:grid;place-items:center}
-    .music-btn.playing{animation:spin 5s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
+    .info-box h3{
+      font-size:16px;
+      font-weight:400;
+      margin:0 0 10px;
+    }
 
-    /* 字體層級：英文草寫＋中文圓潤 */
-    .invite h2,.invite p,.small,.pink-note,.info-box h3,.info-box p,.reminder li,.final-copy p{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif}
-    .hero-title,.city-overlay h3,.names-title,.save-title,.sunset-copy h2,.pink-big,.final-copy h2{font-family:"Great Vibes",cursive}
-    .celebrate-title,.celebrate-quote,.love-you,.lucky,.about-label,.cal-head .month,footer.en{font-family:"Dancing Script",cursive}
-    .hero-date-small,.about-title,.reminder h2{font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif}
+    .info-box p{
+      font-size:12px;
+      line-height:2;
+      margin:0;
+      color:var(--muted);
+    }
+
+    .map-btn{
+      display:inline-block;
+      margin-top:16px;
+      text-decoration:none;
+      border:1px solid var(--rose);
+      color:var(--rose-deep);
+      padding:10px 18px;
+      font-size:10px;
+      letter-spacing:.15em;
+    }
+
+    /* 最後一頁 */
+    .final-photo{
+      position:relative;
+      height:600px;
+      background:#fff;
+    }
+
+    .final-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .final-photo::before{
+      content:"";
+      position:absolute;
+      z-index:1;
+      inset:0;
+      background:linear-gradient(#fff 0%,rgba(255,255,255,.48) 25%,transparent 52%,rgba(255,255,255,.15) 78%,#fff 100%);
+    }
+
+    .final-copy{
+      position:absolute;
+      z-index:2;
+      left:28px;
+      right:28px;
+      bottom:36px;
+      text-align:center;
+    }
+
+    .final-copy h2{
+      font-family:"Great Vibes",cursive;
+      font-size:56px;
+      letter-spacing:0;
+      color:#e85f84;
+      font-weight:400;
+      margin:0 0 8px;
+    }
+
+    .final-copy p{
+      font-size:11px;
+      line-height:1.9;
+      color:#76676b;
+      margin:0;
+    }
+
+    .final-copy p + p{
+      margin-top:8px;
+    }
+
+    /* 背景音樂 */
+    .music-btn{
+      position:fixed;
+      z-index:60;
+      right:max(14px,calc((100vw - 430px)/2 + 14px));
+      top:14px;
+      width:42px;
+      height:42px;
+      border:0;
+      border-radius:50%;
+      background:rgba(255,255,255,.9);
+      color:var(--rose-deep);
+      box-shadow:0 4px 16px rgba(0,0,0,.1);
+      backdrop-filter:blur(8px);
+      font-size:17px;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+    }
+
+    .music-btn.playing{
+      animation:spin 5s linear infinite;
+    }
+
+    @keyframes spin{
+      to{transform:rotate(360deg)}
+    }
 
     @media (max-width:380px){
       .parents{gap:9px}
       .parent-group{min-width:104px}
-      .parent-name{font-size:10px;letter-spacing:.08em}
+      .parent-name{font-size:10px}
       .parent-label{font-size:8px}
     }
 
-    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.music-btn.playing,.scroll-tip{animation:none}}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .reveal{
+        opacity:1;
+        transform:none;
+        transition:none;
+      }
+      .music-btn.playing,
+      .scroll-tip{
+        animation:none;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="loader" id="loader">
     <div class="loader-inner">
-      <div class="loader-photo"><img src="photo01.jpg" alt=""></div>
+      <div class="loader-photo">
+        <img src="photo01.jpg" alt="">
+      </div>
       <div class="loader-text">LOADING OUR STORY...</div>
     </div>
   </div>
@@ -208,117 +481,167 @@
     <!-- 01 封面 -->
     <section class="hero">
       <img src="photo01.jpg" alt="FLY & BEY 婚紗照">
+
       <div class="hero-copy reveal">
-        <div class="hero-date-small en"></div>
-        <h1 class="hero-title en">Wedding<br>Celebration</h1>
+        <h1 class="hero-title">Wedding<br>Celebration</h1>
         <div class="hero-sub">我們要結婚了</div>
         <div class="hero-names">徐啟航　×　李潔苓</div>
+
         <div class="parents" aria-label="雙方主婚人">
           <div class="parent-group">
             <span class="parent-label">男方主婚人</span>
             <span class="parent-name">徐新浩　葉麗敏</span>
           </div>
+
           <div class="parent-divider" aria-hidden="true"></div>
+
           <div class="parent-group">
             <span class="parent-label">女方主婚人</span>
             <span class="parent-name">李和興　陳雲昭</span>
           </div>
         </div>
       </div>
+
       <div class="scroll-tip">SCROLL ↓</div>
     </section>
 
-    <!-- 02 城市／夜景 -->
+    <!-- 02 邀請文字＋照片 -->
     <section class="section invite center reveal">
       <h2>我們其實一樣，在小事中長大<br>用不同的模樣，學會了愛。</h2>
       <p>從相識、相知，到決定牽著彼此走下去，<br>我們想把這份幸福分享給重要的你。</p>
 
-          <h3 class="en"></h3>
-          <p class="small">當「我」慢慢變成「我們」</p>
-      <div class="celebrate-main"><img src="photo10.jpg" alt="棚拍全身婚紗照"></div>
-      <p class="celebrate-quote en"></p>
-      <div class="celebrate-secondary"><img src="photo0.jpg" alt="窗邊婚紗照"></div>
+      <p class="small">當「我」慢慢變成「我們」</p>
 
+      <div class="celebrate-main">
+        <img src="photo10.jpg" alt="婚紗照">
       </div>
     </section>
 
-
-        <img src="photo06.jpg" alt="登記照">
-    
-    <!-- 07 + 08 生活照 -->
+    <!-- 03 囍字邀請 -->
     <section class="section center reveal">
-      <h2 class="save-title en"></h2>
       <div class="double-happiness">囍</div>
       <p class="small">2026 年 10 月 10 日<br>請把這一天留給我們。</p>
       <p class="small">誠摯邀請您，一起見證我們的重要時刻。</p>
     </section>
 
-
-    <!-- 婚宴資訊（依你先前要求，不放 RSVP、不放當日流程） -->
+    <!-- 04 婚宴資訊 -->
     <section class="section reveal">
       <div class="calendar" aria-label="2026年10月月曆">
         <div class="cal-head">
-          <div class="month en">OCTOBER</div>
+          <div class="month">OCTOBER</div>
           <div class="year">2026</div>
         </div>
+
         <div class="cal-grid">
-          <span class="dow">SUN</span><span class="dow">MON</span><span class="dow">TUE</span><span class="dow">WED</span><span class="dow">THU</span><span class="dow">FRI</span><span class="dow">SAT</span>
-          <span class="muted">27</span><span class="muted">28</span><span class="muted">29</span><span class="muted">30</span><span>1</span><span>2</span><span>3</span>
-          <span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span class="day10">10</span>
-          <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span>
-          <span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span>
-          <span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
+          <span class="dow">SUN</span>
+          <span class="dow">MON</span>
+          <span class="dow">TUE</span>
+          <span class="dow">WED</span>
+          <span class="dow">THU</span>
+          <span class="dow">FRI</span>
+          <span class="dow">SAT</span>
+
+          <span class="muted">27</span>
+          <span class="muted">28</span>
+          <span class="muted">29</span>
+          <span class="muted">30</span>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+
+          <span>4</span>
+          <span>5</span>
+          <span>6</span>
+          <span>7</span>
+          <span>8</span>
+          <span>9</span>
+          <span class="day10">10</span>
+
+          <span>11</span>
+          <span>12</span>
+          <span>13</span>
+          <span>14</span>
+          <span>15</span>
+          <span>16</span>
+          <span>17</span>
+
+          <span>18</span>
+          <span>19</span>
+          <span>20</span>
+          <span>21</span>
+          <span>22</span>
+          <span>23</span>
+          <span>24</span>
+
+          <span>25</span>
+          <span>26</span>
+          <span>27</span>
+          <span>28</span>
+          <span>29</span>
+          <span>30</span>
+          <span>31</span>
         </div>
       </div>
 
       <div class="info-box">
         <h3>彭園新板館｜8 樓夢幻廳</h3>
-        <p>新北市板橋區中山路一段 161 號<br>星期六｜午宴｜12:00 入席｜12:30 開席</p>
-    
-        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E5%BD%AD%E5%9C%92%E6%96%B0%E6%9D%BF%E9%A4%A8" target="_blank" rel="noopener">GOOGLE MAP</a>
+        <p>
+          新北市板橋區中山路一段 161 號<br>
+          星期六｜午宴｜12:00 入席｜12:30 開席
+        </p>
+
+        <a
+          class="map-btn"
+          href="https://www.google.com/maps/search/?api=1&query=%E5%BD%AD%E5%9C%92%E6%96%B0%E6%9D%BF%E9%A4%A8"
+          target="_blank"
+          rel="noopener"
+        >GOOGLE MAP</a>
       </div>
 
       <div class="info-box">
         <h3>交通／停車資訊</h3>
-        <p>可停放市民廣場地下停車場<br>提供 3 小時汽車停車券折抵<br><br>搭乘捷運、台鐵、高鐵至「板橋站」後步行5分鐘前往。</p>
+        <p>
+          可停放市民廣場地下停車場<br>
+          提供 3 小時汽車停車券折抵<br><br>
+          搭乘捷運、台鐵、高鐵至「板橋站」後步行 5 分鐘前往。
+        </p>
       </div>
     </section>
 
-
-
-    <!-- 12 最後自拍 -->
+    <!-- 05 最後一頁 -->
     <section class="final-photo reveal">
       <img src="photo12.jpg" alt="FLY & BEY 頭紗自拍">
+
       <div class="final-copy">
-        <h2 class="en">Thanks</h2>
-        
-      <h2 class="pink-big en"></h2>
-      <p class="pink-note">期待在這一天</p>
-        <p>看見每一位重要的你。</p>
-        <p>婚禮見！<br><br><br>啟航 & 潔苓 · 2026.10.10</p>
+        <h2>Thanks</h2>
+        <p>期待在這一天，看見每一位重要的你。</p>
+        <p>婚禮見！<br><br>啟航 & 潔苓 · 2026.10.10</p>
       </div>
     </section>
-
   </main>
 
   <script>
     window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('loader').classList.add('hide'), 850);
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hide');
+      }, 850);
     });
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if(entry.isIntersecting){
           entry.target.classList.add('show');
           observer.unobserve(entry.target);
         }
       });
     }, {threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
     const bgm = document.getElementById('bgm');
     const btn = document.getElementById('musicBtn');
     let playing = false;
+
     btn.addEventListener('click', async () => {
       try{
         if(!playing){
@@ -334,7 +657,9 @@
           btn.classList.remove('playing');
           btn.setAttribute('aria-label','播放背景音樂');
         }
-      }catch(e){console.log(e)}
+      }catch(error){
+        console.log(error);
+      }
     });
   </script>
 </body>
