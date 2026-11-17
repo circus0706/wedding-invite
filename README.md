@@ -1,1 +1,1 @@
-# wedding-invite
+# birthday-invite
