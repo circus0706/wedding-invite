@@ -1,672 +1,572 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="description" content="FLY & BEY Wedding Invitation — 2026.10.10" />
-  <title>啟航 & 潔苓｜2026.10.10</title>
-
-  <!--
-    目前實際使用檔案：
-    photo01.jpg  封面
-    photo10.jpg  內頁照片
-    photo12.jpg  最後一頁照片
-    bgm.mp3      背景音樂
-  -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&family=Great+Vibes&family=Noto+Sans+TC:wght@300;400;500;600&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --rose:#c6929d;
-      --rose-deep:#a56f79;
-      --paper:#fffefd;
-      --ink:#4d4345;
-      --muted:#8b7b7f;
-      --line:#eadbdd;
-    }
-
-    *{box-sizing:border-box}
-
-    html{
-      scroll-behavior:smooth;
-      background:#ececec;
-    }
-
-    body{
-      margin:0;
-      color:var(--ink);
-      background:#ececec;
-      font-family:"Zen Maru Gothic","Noto Sans TC",sans-serif;
-      font-weight:400;
-      letter-spacing:.035em;
-    }
-
-    img{
-      display:block;
-      width:100%;
-      height:auto;
-    }
-
-    .page{
-      width:min(100%,430px);
-      margin:0 auto;
-      background:var(--paper);
-      overflow:hidden;
-      box-shadow:0 0 35px rgba(0,0,0,.1);
-    }
-
-    .center{text-align:center}
-
-    .section{
-      position:relative;
-      padding:62px 32px;
-    }
-
-    .small{
-      font-size:12px;
-      line-height:2;
-      color:var(--muted);
-    }
-
-    /* 滾動淡入 */
-    .reveal{
-      opacity:0;
-      transform:translateY(22px);
-      transition:opacity .85s ease,transform .85s ease;
-    }
-
-    .reveal.show{
-      opacity:1;
-      transform:none;
-    }
-
-    /* Loading */
-    .loader{
-      position:fixed;
-      inset:0;
-      z-index:1000;
-      background:#fff;
-      display:grid;
-      place-items:center;
-      transition:opacity .65s ease,visibility .65s ease;
-    }
-
-    .loader.hide{
-      opacity:0;
-      visibility:hidden;
-    }
-
-    .loader-inner{text-align:center}
-
-    .loader-photo{
-      width:76px;
-      height:76px;
-      border-radius:50%;
-      overflow:hidden;
-      margin:0 auto 14px;
-    }
-
-    .loader-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .loader-text{
-      font-size:10px;
-      letter-spacing:.25em;
-      color:#9f8e92;
-    }
-
-    /* 封面 */
-    .hero{
-      position:relative;
-      height:100svh;
-      min-height:650px;
-      background:#fff;
-      overflow:hidden;
-    }
-
-    .hero > img{
-      width:100%;
-      height:78%;
-      object-fit:cover;
-      object-position:center top;
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:38% 0 0;
-      background:linear-gradient(transparent 0%,rgba(255,255,255,.72) 48%,#fff 76%);
-    }
-
-    .hero-copy{
-      position:absolute;
-      z-index:2;
-      left:24px;
-      right:24px;
-      bottom:48px;
-      text-align:center;
-    }
-
-    .hero-title{
-      margin:0 0 10px;
-      font-family:"Great Vibes",cursive;
-      font-size:50px;
-      line-height:.9;
-      font-weight:400;
-      letter-spacing:0;
-      color:#d61850;
-    }
-
-    .hero-sub{
-      font-size:20px;
-      letter-spacing:.2em;
-      color:#e85f84;
-      font-weight:500;
-    }
-
-    .hero-names{
-      margin-top:20px;
-      font-size:14px;
-      letter-spacing:.12em;
-      font-weight:500;
-    }
-
-    .parents{
-      margin-top:18px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:14px;
-    }
-
-    .parent-group{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:5px;
-      min-width:118px;
-    }
-
-    .parent-label{
-      font-size:9px;
-      letter-spacing:.1em;
-      color:#e85f84;
-      white-space:nowrap;
-      font-weight:500;
-    }
-
-    .parent-name{
-      font-size:12px;
-      letter-spacing:.08em;
-      color:#000;
-      white-space:nowrap;
-      font-weight:500;
-    }
-
-    .parent-divider{
-      width:1px;
-      height:34px;
-      background:#dbc9cd;
-    }
-
-    .scroll-tip{
-      position:absolute;
-      z-index:3;
-      bottom:12px;
-      left:50%;
-      transform:translateX(-50%);
-      font-size:9px;
-      letter-spacing:.25em;
-      color:#ad999e;
-      animation:bob 1.7s ease-in-out infinite;
-    }
-
-    @keyframes bob{
-      50%{transform:translate(-50%,5px)}
-    }
-
-    /* 邀請文字 */
-    .invite h2{
-      font-size:18px;
-      font-weight:400;
-      line-height:1.9;
-      margin:0 0 18px;
-    }
-
-    .invite > p{
-      font-size:12px;
-      line-height:2.1;
-      margin:0;
-      color:var(--muted);
-    }
-
-    .invite .small{
-      margin-top:28px;
-    }
-
-    .celebrate-main{
-      margin-top:18px;
-      padding:0 14px;
-    }
-
-    .celebrate-main img{
-      aspect-ratio:4/5;
-      object-fit:cover;
-      border:7px solid rgba(198,146,157,.14);
-    }
-
-    /* 囍字邀請 */
-    .double-happiness{
-      font-size:80px;
-      line-height:.95;
-      margin:3px 0 14px;
-      color:#e85f84;
-      font-family:serif;
-    }
-
-    /* 婚宴資訊 */
-    .calendar{
-      margin:0 auto 32px;
-      max-width:320px;
-    }
-
-    .cal-head{
-      text-align:center;
-      margin-bottom:12px;
-    }
-
-    .cal-head .month{
-      font-family:"Dancing Script",cursive;
-      font-size:34px;
-      line-height:1.1;
-    }
-
-    .cal-head .year{
-      font-size:10px;
-      letter-spacing:.18em;
-      margin-top:4px;
-    }
-
-    .cal-grid{
-      display:grid;
-      grid-template-columns:repeat(7,1fr);
-      gap:3px;
-      text-align:center;
-      font-size:11px;
-    }
-
-    .cal-grid span{
-      padding:8px 0;
-      position:relative;
-    }
-
-    .cal-grid .dow{
-      font-size:8px;
-      color:#ad999d;
-      padding-bottom:3px;
-    }
-
-    .cal-grid .muted{color:#ddd0d3}
-
-    .cal-grid .day10{
-      color:#fff;
-      z-index:1;
-      font-weight:500;
-    }
-
-    .cal-grid .day10::before{
-      content:"♥";
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-54%);
-      color:var(--rose);
-      font-size:31px;
-      z-index:-1;
-    }
-
-    .info-box{
-      border-top:1px solid var(--line);
-      padding-top:26px;
-      margin-top:25px;
-      text-align:center;
-    }
-
-    .info-box h3{
-      font-size:16px;
-      font-weight:400;
-      margin:0 0 10px;
-    }
-
-    .info-box p{
-      font-size:12px;
-      line-height:2;
-      margin:0;
-      color:var(--muted);
-    }
-
-    .map-btn{
-      display:inline-block;
-      margin-top:16px;
-      text-decoration:none;
-      border:1px solid var(--rose);
-      color:var(--rose-deep);
-      padding:10px 18px;
-      font-size:10px;
-      letter-spacing:.15em;
-    }
-
-    /* 最後一頁 */
-    .final-photo{
-      position:relative;
-      height:600px;
-      background:#fff;
-    }
-
-    .final-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
-    }
-
-    .final-photo::before{
-      content:"";
-      position:absolute;
-      z-index:1;
-      inset:0;
-      background:linear-gradient(#fff 0%,rgba(255,255,255,.48) 25%,transparent 52%,rgba(255,255,255,.15) 78%,#fff 100%);
-    }
-
-    .final-copy{
-      position:absolute;
-      z-index:2;
-      left:28px;
-      right:28px;
-      bottom:36px;
-      text-align:center;
-    }
-
-    .final-copy h2{
-      font-family:"Great Vibes",cursive;
-      font-size:56px;
-      letter-spacing:0;
-      color:#e85f84;
-      font-weight:400;
-      margin:0 0 8px;
-    }
-
-    .final-copy p{
-      font-size:11px;
-      line-height:1.9;
-      color:#76676b;
-      margin:0;
-    }
-
-    .final-copy p + p{
-      margin-top:8px;
-    }
-
-    /* 背景音樂 */
-    .music-btn{
-      position:fixed;
-      z-index:60;
-      right:max(14px,calc((100vw - 430px)/2 + 14px));
-      top:14px;
-      width:42px;
-      height:42px;
-      border:0;
-      border-radius:50%;
-      background:rgba(255,255,255,.9);
-      color:var(--rose-deep);
-      box-shadow:0 4px 16px rgba(0,0,0,.1);
-      backdrop-filter:blur(8px);
-      font-size:17px;
-      cursor:pointer;
-      display:grid;
-      place-items:center;
-    }
-
-    .music-btn.playing{
-      animation:spin 5s linear infinite;
-    }
-
-    @keyframes spin{
-      to{transform:rotate(360deg)}
-    }
-
-    @media (max-width:380px){
-      .parents{gap:9px}
-      .parent-group{min-width:104px}
-      .parent-name{font-size:10px}
-      .parent-label{font-size:8px}
-    }
-
-    @media (prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
-      .reveal{
-        opacity:1;
-        transform:none;
-        transition:none;
-      }
-      .music-btn.playing,
-      .scroll-tip{
-        animation:none;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>老外生日企劃｜怕胖團 Birthday Party</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;800;900&display=swap');
+
+:root {
+  --red: #ff3b30;
+  --yellow: #ffd447;
+  --dark: #151515;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--dark);
+  color: white;
+}
+
+.hero {
+  min-height: 320px;
+  padding: 55px 20px 45px;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(0,0,0,.9), rgba(50,0,0,.7)),
+    repeating-linear-gradient(45deg,#252525 0,#252525 2px,#191919 2px,#191919 8px);
+  border-bottom: 5px solid var(--red);
+}
+
+.tag {
+  display: inline-block;
+  background: var(--red);
+  padding: 7px 17px;
+  border-radius: 30px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 8vw, 66px);
+  line-height: 1.2;
+  margin: 20px 0 8px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.hero h1 span { color: var(--yellow); }
+
+.hero p {
+  color: #ddd;
+  letter-spacing: 2px;
+  font-size: 15px;
+}
+
+.hero .sub {
+  margin-top: 25px;
+  color: var(--yellow);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+.container {
+  max-width: 680px;
+  margin: auto;
+  padding: 25px 18px 60px;
+}
+
+.intro {
+  text-align: center;
+  padding: 20px 5px 30px;
+  line-height: 1.9;
+  color: #ddd;
+}
+
+.intro strong {
+  color: var(--yellow);
+}
+
+.section {
+  margin: 25px 0;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.number {
+  background: var(--red);
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.hint {
+  color: #aaa;
+  font-size: 12px;
+  margin: -7px 0 14px 42px;
+}
+
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+}
+
+.choice {
+  cursor: pointer;
+  position: relative;
+}
+
+.choice input {
+  position: absolute;
+  opacity: 0;
+}
+
+.choice span {
+  display: block;
+  background: #292929;
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 15px 5px;
+  text-align: center;
+  transition: .2s;
+}
+
+.choice span small {
+  display: block;
+  color: #aaa;
+  font-size: 11px;
+}
+
+.choice input:checked + span {
+  background: var(--red);
+  border-color: var(--yellow);
+  color: white;
+  box-shadow: 0 0 12px #ff3b3055;
+}
+
+.choice input:checked + span small {
+  color: white;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.time-grid .choice span {
+  padding: 13px 5px;
+  font-weight: 800;
+}
+
+.restaurant {
+  display: block;
+  margin-bottom: 13px;
+  cursor: pointer;
+  position: relative;
+}
+
+.restaurant input {
+  position: absolute;
+  opacity: 0;
+}
+
+.restaurant-card {
+  background: #292929;
+  border: 1px solid #444;
+  border-radius: 14px;
+  padding: 17px;
+  transition: .2s;
+}
+
+.restaurant input:checked + .restaurant-card {
+  border: 2px solid var(--yellow);
+  background: #392a20;
+}
+
+.restaurant-card h3 {
+  margin: 0 0 7px;
+  font-size: 17px;
+}
+
+.restaurant-card p {
+  color: #aaa;
+  font-size: 12px;
+  margin: 0 0 12px;
+}
+
+.map-link {
+  display: inline-block;
+  color: var(--yellow);
+  text-decoration: none;
+  font-size: 12px;
+  border-bottom: 1px solid var(--yellow);
+  padding-bottom: 2px;
+}
+
+.name-input {
+  width: 100%;
+  padding: 15px;
+  background: #292929;
+  border: 1px solid #555;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.name-input:focus {
+  border-color: var(--yellow);
+}
+
+.submit {
+  width: 100%;
+  padding: 17px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--red);
+  color: white;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: .2s;
+}
+
+.submit:hover {
+  background: #ff594f;
+  transform: translateY(-2px);
+}
+
+.result {
+  display: none;
+  margin-top: 25px;
+  padding: 22px;
+  border: 2px solid var(--yellow);
+  border-radius: 15px;
+  background: #292929;
+  line-height: 1.9;
+}
+
+.result h2 {
+  color: var(--yellow);
+  margin-top: 0;
+}
+
+.copy-btn {
+  width: 100%;
+  background: var(--yellow);
+  color: #111;
+  border: 0;
+  border-radius: 9px;
+  padding: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.line-btn {
+  display: block;
+  text-align: center;
+  background: #06c755;
+  color: white;
+  text-decoration: none;
+  padding: 13px;
+  border-radius: 9px;
+  margin-top: 10px;
+  font-weight: 800;
+}
+
+.footer {
+  text-align: center;
+  color: #777;
+  font-size: 12px;
+  padding: 30px 10px;
+}
+
+@media(max-width:400px) {
+  .date-grid { grid-template-columns: repeat(4,1fr); }
+  .time-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
 </head>
 
 <body>
-  <div class="loader" id="loader">
-    <div class="loader-inner">
-      <div class="loader-photo">
-        <img src="photo01.jpg" alt="">
-      </div>
-      <div class="loader-text">LOADING OUR STORY...</div>
-    </div>
+
+<header class="hero">
+  <div class="tag">FEAR OF FAT BAND · SPECIAL EVENT</div>
+  <h1>老外<span>生日</span>快樂！</h1>
+  <p>THE DRUMMER DESERVES A BIG PARTY.</p>
+  <div class="sub">🥁 11.23 — 11.29 BIRTHDAY DINNER 🥁</div>
+</header>
+
+<main class="container">
+
+  <div class="intro">
+    這不是普通的聚餐。<br>
+    這是專屬於 <strong>怕胖團鼓手・老外</strong> 的生日任務！<br>
+    請選出你可以參加的日期、時間與餐廳，<br>
+    一起讓這個生日變成年度名場面！🔥
   </div>
 
-  <button class="music-btn" id="musicBtn" aria-label="播放背景音樂">♫</button>
-  <audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
+  <form id="birthdayForm">
 
-  <main class="page">
-    <!-- 01 封面 -->
-    <section class="hero">
-      <img src="photo01.jpg" alt="FLY & BEY 婚紗照">
+    <div class="section">
+      <div class="section-title">
+        <span class="number">01</span> 選擇日期
+      </div>
+      <p class="hint">活動期間：2026 年 11 月 23 日至 29 日</p>
 
-      <div class="hero-copy reveal">
-        <h1 class="hero-title">Welcome To<br>Our Wedding</h1>
-        <div class="hero-sub">我們要結婚了</div>
-        <div class="hero-names">徐啟航　×　李潔苓</div>
+      <div class="date-grid" id="dateGrid"></div>
+    </div>
 
-        <div class="parents" aria-label="雙方主婚人">
-          <div class="parent-group">
-            <span class="parent-label">男方主婚人</span>
-            <span class="parent-name">徐新浩　葉麗敏</span>
-          </div>
+    <div class="section">
+      <div class="section-title">
+        <span class="number">02</span> 選擇時間
+      </div>
+      <p class="hint" id="timeHint">請先選擇日期</p>
+      <div class="time-grid" id="timeGrid"></div>
+    </div>
 
-          <div class="parent-divider" aria-hidden="true"></div>
+    <div class="section">
+      <div class="section-title">
+        <span class="number">03</span> 選擇餐廳
+      </div>
 
-          <div class="parent-group">
-            <span class="parent-label">女方主婚人</span>
-            <span class="parent-name">李和興　陳雲昭</span>
-          </div>
+      <label class="restaurant">
+        <input type="radio" name="restaurant"
+          value="老井極上燒肉－台北信義店"
+          data-url="https://maps.app.goo.gl/k5ySujj73vyuce2o8">
+        <div class="restaurant-card">
+          <h3>🥩 老井極上燒肉</h3>
+          <p>台北信義店｜燒肉派對</p>
+          <a class="map-link"
+             href="https://maps.app.goo.gl/k5ySujj73vyuce2o8"
+             target="_blank">📍 查看 Google Maps ↗</a>
         </div>
-      </div>
+      </label>
 
-      <div class="scroll-tip">SCROLL ↓</div>
-    </section>
-
-    <!-- 02 邀請文字＋照片 -->
-    <section class="section invite center reveal">
-      <h2>我們其實一樣，在小事中長大<br>用不同的模樣，學會了愛。</h2>
-      <p>從相識、相知，到決定牽著彼此走下去，<br>我們想把這份幸福分享給重要的你。</p>
-
-      <p class="small">當「我」慢慢變成「我們」</p>
-
-      <div class="celebrate-main">
-        <img src="photo10.jpg" alt="婚紗照">
-      </div>
-      <div class="celebrate-main">
-        <img src="photo0.jpg" alt="婚紗照">
-      </div>
-    </section>
-
-    <!-- 03 囍字邀請 -->
-    <section class="section center reveal">
-      <div class="double-happiness">囍</div>
-      <p class="small">2026 年 10 月 10 日<br>請把這一天留給我們。</p>
-      <p class="small">誠摯邀請您，一起見證我們的重要時刻。</p>
-    </section>
-      <div class="celebrate-main">
-        <img src="photo06.jpg" alt="戒指照">
-      </div>
-    <!-- 04 婚宴資訊 -->
-    <section class="section reveal">
-      <div class="calendar" aria-label="2026年10月月曆">
-        <div class="cal-head">
-          <div class="month">OCTOBER</div>
-          <div class="year">2026</div>
+      <label class="restaurant">
+        <input type="radio" name="restaurant"
+          value="貓下去敦北俱樂部"
+          data-url="https://maps.app.goo.gl/H811SrycTk2GFwyU7">
+        <div class="restaurant-card">
+          <h3>🍸 貓下去敦北俱樂部</h3>
+          <p>敦北俱樂部｜美食與微醺</p>
+          <a class="map-link"
+             href="https://maps.app.goo.gl/H811SrycTk2GFwyU7"
+             target="_blank">📍 查看 Google Maps ↗</a>
         </div>
+      </label>
 
-        <div class="cal-grid">
-          <span class="dow">SUN</span>
-          <span class="dow">MON</span>
-          <span class="dow">TUE</span>
-          <span class="dow">WED</span>
-          <span class="dow">THU</span>
-          <span class="dow">FRI</span>
-          <span class="dow">SAT</span>
-
-          <span class="muted">27</span>
-          <span class="muted">28</span>
-          <span class="muted">29</span>
-          <span class="muted">30</span>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-
-          <span>4</span>
-          <span>5</span>
-          <span>6</span>
-          <span>7</span>
-          <span>8</span>
-          <span>9</span>
-          <span class="day10">10</span>
-
-          <span>11</span>
-          <span>12</span>
-          <span>13</span>
-          <span>14</span>
-          <span>15</span>
-          <span>16</span>
-          <span>17</span>
-
-          <span>18</span>
-          <span>19</span>
-          <span>20</span>
-          <span>21</span>
-          <span>22</span>
-          <span>23</span>
-          <span>24</span>
-
-          <span>25</span>
-          <span>26</span>
-          <span>27</span>
-          <span>28</span>
-          <span>29</span>
-          <span>30</span>
-          <span>31</span>
+      <label class="restaurant">
+        <input type="radio" name="restaurant"
+          value="年三十鐵板串燒居酒屋－光復店"
+          data-url="https://maps.app.goo.gl/pEiRkkaUPGQYqyuh9">
+        <div class="restaurant-card">
+          <h3>🍢 年三十鐵板串燒居酒屋</h3>
+          <p>光復店｜串燒與生日乾杯</p>
+          <a class="map-link"
+             href="https://maps.app.goo.gl/pEiRkkaUPGQYqyuh9"
+             target="_blank">📍 查看 Google Maps ↗</a>
         </div>
+      </label>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <span class="number">04</span> 你的大名
       </div>
+      <input class="name-input" id="name"
+        type="text" placeholder="請輸入你的名字" required>
+    </div>
 
-      <div class="info-box">
-        <h3>彭園新板館   8 樓夢幻廳</h3>
-        <p>
-          新北市板橋區中山路一段 161 號<br>
-          星期六  午宴<br>12:00 入席<br>12:30 開席
-        </p>
+    <button class="submit" type="submit">
+      🥁 完成生日投票！
+    </button>
 
-        <a
-          class="map-btn"
-          href="https://www.google.com/maps/search/?api=1&query=%E5%BD%AD%E5%9C%92%E6%96%B0%E6%9D%BF%E9%A4%A8"
-          target="_blank"
-          rel="noopener"
-        >GOOGLE MAP</a>
-      </div>
+  </form>
 
-      <div class="info-box">
-        <h3>交通／停車資訊</h3>
-        <p>
-          可停放市民廣場地下停車場<br>
-          提供 3 小時汽車停車券折抵<br>
-             <img src="photo98.jpg" alt="交通照">
-             <img src="photo99.jpg" alt="電梯照">
-        </p>
-      </div>
-    </section>
+  <div class="result" id="result">
+    <h2>🎉 投票完成！</h2>
+    <div id="resultText"></div>
+    <button class="copy-btn" id="copyBtn" type="button">
+      📋 複製投票內容
+    </button>
+    <a class="line-btn" id="lineBtn" target="_blank">
+      LINE 分享投票結果
+    </a>
+  </div>
 
-    <!-- 05 最後一頁 -->
-    <section class="final-photo reveal">
-      <img src="photo12.jpg" alt="FLY & BEY 頭紗自拍">
+</main>
 
-      <div class="final-copy">
-        <br><h2>Thanks</h2>
-        <br><br><p>期待在這一天<br>看見每一位重要的你</p>
-        <p>婚禮見！<br></p>
-      </div>
-    </section>
-  </main>
+<footer class="footer">
+  MADE WITH LOVE FOR 老外 🥁<br>
+  FEAR OF FAT BAND BIRTHDAY PROJECT · 2026
+</footer>
 
-  <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loader').classList.add('hide');
-      }, 850);
-    });
+<script>
+const dates = [
+  {date:"2026-11-23", day:"週一"},
+  {date:"2026-11-24", day:"週二"},
+  {date:"2026-11-25", day:"週三"},
+  {date:"2026-11-26", day:"週四"},
+  {date:"2026-11-27", day:"週五"},
+  {date:"2026-11-28", day:"週六"},
+  {date:"2026-11-29", day:"週日"}
+];
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {threshold:.12});
+const dateGrid = document.getElementById("dateGrid");
+const timeGrid = document.getElementById("timeGrid");
+const timeHint = document.getElementById("timeHint");
 
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+dates.forEach(item => {
+  const label = document.createElement("label");
+  label.className = "choice";
 
-    const bgm = document.getElementById('bgm');
-    const btn = document.getElementById('musicBtn');
-    let playing = false;
+  label.innerHTML = `
+    <input type="radio" name="date"
+      value="${item.date}" required>
+    <span>
+      ${item.date.slice(5).replace("-","/")}
+      <small>${item.day}</small>
+    </span>
+  `;
 
-    btn.addEventListener('click', async () => {
-      try{
-        if(!playing){
-          await bgm.play();
-          playing = true;
-          btn.textContent = '♪';
-          btn.classList.add('playing');
-          btn.setAttribute('aria-label','暫停背景音樂');
-        }else{
-          bgm.pause();
-          playing = false;
-          btn.textContent = '♫';
-          btn.classList.remove('playing');
-          btn.setAttribute('aria-label','播放背景音樂');
-        }
-      }catch(error){
-        console.log(error);
-      }
-    });
-  </script>
+  dateGrid.appendChild(label);
+});
+
+const weekdayTimes = [
+  "19:30","20:00","20:30","21:00"
+];
+
+const weekendTimes = [
+  "17:00","17:30","18:00","18:30",
+  "19:00","19:30","20:00"
+];
+
+dateGrid.addEventListener("change", e => {
+  if(e.target.name !== "date") return;
+
+  const selectedDate = dates.find(
+    d => d.date === e.target.value
+  );
+
+  const day = new Date(
+    selectedDate.date + "T12:00:00"
+  ).getDay();
+
+  const isWeekend = day === 0 || day === 6;
+  const times = isWeekend ? weekendTimes : weekdayTimes;
+
+  timeHint.textContent = isWeekend
+    ? "假日限定｜晚餐時段 17:00 後"
+    : "平日限定｜晚上 19:30 後";
+
+  timeGrid.innerHTML = "";
+
+  times.forEach(time => {
+    const label = document.createElement("label");
+    label.className = "choice";
+
+    label.innerHTML = `
+      <input type="radio" name="time"
+        value="${time}" required>
+      <span>${time}</span>
+    `;
+
+    timeGrid.appendChild(label);
+  });
+});
+
+let finalMessage = "";
+
+document.getElementById("birthdayForm")
+.addEventListener("submit", e => {
+  e.preventDefault();
+
+  const date = document.querySelector(
+    'input[name="date"]:checked'
+  ).value;
+
+  const time = document.querySelector(
+    'input[name="time"]:checked'
+  )?.value;
+
+  const restaurant = document.querySelector(
+    'input[name="restaurant"]:checked'
+  );
+
+  const name = document.getElementById("name").value.trim();
+
+  if(!time || !restaurant || !name) {
+    alert("請完整填寫日期、時間、餐廳及姓名！");
+    return;
+  }
+
+  const dateObj = dates.find(d => d.date === date);
+
+  finalMessage =
+`🥁 老外生日派對投票 🥁
+
+投票者：${name}
+日期：${date}（${dateObj.day}）
+時間：${time}
+餐廳：${restaurant.value}
+餐廳地圖：${restaurant.dataset.url}
+
+老外生日快樂！一起來吃飯慶生吧！🎂`;
+
+  document.getElementById("resultText").innerHTML = `
+    <p>👤 投票者：${escapeHTML(name)}</p>
+    <p>📅 日期：${date}（${dateObj.day}）</p>
+    <p>⏰ 時間：${time}</p>
+    <p>🍽️ 餐廳：${escapeHTML(restaurant.value)}</p>
+    <p><a href="${restaurant.dataset.url}"
+      target="_blank" style="color:#ffd447">
+      查看餐廳位置 ↗
+    </a></p>
+  `;
+
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("lineBtn").href =
+    "https://line.me/R/msg/text/?" +
+    encodeURIComponent(finalMessage);
+
+  document.getElementById("result")
+    .scrollIntoView({behavior:"smooth"});
+});
+
+function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, c => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[c]);
+}
+
+document.getElementById("copyBtn")
+.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(finalMessage);
+    alert("投票內容已複製！");
+  } catch(e) {
+    alert("複製失敗，請改用 LINE 分享。");
+  }
+});
+</script>
+
 </body>
 </html>
